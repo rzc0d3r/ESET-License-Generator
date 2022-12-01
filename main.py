@@ -3,7 +3,7 @@ import time
 
 SIZE = 1
 OUTPUT = 'eset_accounts.txt'
-SLEEP = 5
+SLEEP = 60
 
 
 for i in range(SIZE):
