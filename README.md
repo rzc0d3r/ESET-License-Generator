@@ -1,5 +1,5 @@
-# ESET-Linense-Generator
-ESET Linense Generator - Генерує акаунти для активації пробного періоду
+# ESET-License-Generator
+ESET License Generator - Генерує акаунти для активації пробного періоду
 
 # Як застосувати
 
