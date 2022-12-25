@@ -1,4 +1,5 @@
 # rzc0d3r code
+# Version: 1.0.0 (30.11.2022)
 import re
 import requests
 import time
