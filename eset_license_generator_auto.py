@@ -1,3 +1,4 @@
+# Version: 1.0.1 (25.12.2022)
 import eset_intercepter as ESET
 import selenium.webdriver
 import random
@@ -18,7 +19,11 @@ def CreateAccount(email, password):
     driver.get(f'https://login.eset.com/Register?e={email}&p={password}')
     js = [
         f"document.getElementById('Email').value = '{email}'",
-        f"document.getElementById('Password').value = '{password}'",
+        "document.forms[0].submit()"
+    ]
+    driver.execute_script('\n'.join(js))
+    js = [
+       f"document.getElementById('Password').value = '{password}'",
         "document.forms[0].submit()"
     ]
     driver.execute_script('\n'.join(js))
