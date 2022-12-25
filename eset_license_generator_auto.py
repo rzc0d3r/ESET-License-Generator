@@ -16,7 +16,7 @@ def CreateEmailAndPassword():
 def CreateAccount(email, password):
     driver = selenium.webdriver.Edge('msedgedriver.exe')
     driver.minimize_window()
-    driver.get(f'https://login.eset.com/Register?e={email}&p={password}')
+    driver.get(f'https://login.eset.com/Register')
     js = [
         f"document.getElementById('Email').value = '{email}'",
         "document.forms[0].submit()"
