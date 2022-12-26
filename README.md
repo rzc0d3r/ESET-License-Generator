@@ -3,7 +3,7 @@ ESET License Generator - Генерує акаунти для активації
 
 # Як застосувати
 
-0. Завантажити [Microsoft Edge](https://www.microsoft.com/uk-ua/edge/home) та його [Stable драйвер](https://developer.microsoft.com/microsoft-edge/tools/webdriver/). Драйвер потрібно розпакувати і перемістити в папку з main.py. Далі встановити бібліотеки Python:
+0. Завантажити [Chrome](https://www.google.com/intl/ru/chrome/) та його [Stable драйвер](https://chromedriver.chromium.org/). Драйвер потрібно розпакувати і перемістити в папку з main.py. Далі встановити бібліотеки Python:
 
 pip install selenium, requests
 
