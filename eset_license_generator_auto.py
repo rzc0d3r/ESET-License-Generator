@@ -1,4 +1,4 @@
-# Version: 1.0.1 (25.12.2022)
+# Version: 1.0.2 (26.12.2022)
 import eset_intercepter as ESET
 import selenium.webdriver
 import random
@@ -14,7 +14,7 @@ def CreateEmailAndPassword():
     return email_obj, email, password
     
 def CreateAccount(email, password):
-    driver = selenium.webdriver.Edge('msedgedriver.exe')
+    driver = selenium.webdriver.Chrome('chromedriver.exe')
     driver.minimize_window()
     driver.get(f'https://login.eset.com/Register')
     js = [
