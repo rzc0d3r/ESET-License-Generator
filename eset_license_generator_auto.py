@@ -45,15 +45,21 @@ def ConfirmAccount(driver, token):
     driver.quit()
 
 def CreateALL():
-    email_obj, email, password = CreateEmailAndPassword()
-    driver = CreateAccount(email, password)
-    if driver is None:
-        return None
-    token = GetToken(email_obj)
-    print(f'\n[+] ESET Token: {token}')
-    ConfirmAccount(driver, token)
-    print(f'\nEmail: {email}\nPassword: {password}')
-    return email, password
+    try:
+        email_obj, email, password = CreateEmailAndPassword()
+        driver = CreateAccount(email, password)
+        if driver is None:
+            return None
+        token = GetToken(email_obj)
+        print(f'\n[+] ESET Token: {token}')
+        ConfirmAccount(driver, token)
+        print(f'\nEmail: {email}\nPassword: {password}')
+        return email, password
+    except ESET.EmailConnectError:
+        print('[-] Error connect to server!!!')
+    except Exception as E:
+        print(E)
+    return None
 
 if __name__ == '__main__':
     CreateALL()
