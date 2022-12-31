@@ -1,9 +1,11 @@
-# rzc0d3r code
-# Version: 1.0.0 (30.11.2022)
+# Version: 1.0.1 (31.12.2022)
 import re
 import requests
 import time
-from sys import exit
+import sys
+
+class EmailConnectError(Exception):
+    pass
 
 class Email:
     def __init__(self):
@@ -16,13 +18,9 @@ class Email:
         try:
             r = requests.get(url)
         except:
-            print('[-] Check you internet connection!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         if r.status_code != 200:
-            print('[-] Error connect to server!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         self.__login, self.__domain = str(r.content, 'utf-8')[2:-2].split('@')
     
     def login(self, login, domain):
@@ -37,13 +35,9 @@ class Email:
         try:
             r = requests.get(url)
         except:
-            print('[-] Check you internet connection!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         if r.status_code != 200:
-            print('[-] Error connect to server!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         return r.json()
     
     def get_message(self, message_id):
@@ -51,13 +45,9 @@ class Email:
         try:
             r = requests.get(url)
         except:
-            print(f'[-] Check you internet connection!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         if r.status_code != 200:
-            print('[-] Error connect to server!!!')
-            input('Press enter to exit...')
-            exit(-2)
+            raise EmailConnectError
         return r.json()
 
 def ESETIntercepter(email_object):
