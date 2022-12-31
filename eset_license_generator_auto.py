@@ -1,8 +1,10 @@
-# Version: 1.0.2 (26.12.2022)
+# Version: 1.0.3 (31.12.2022)
 import eset_intercepter as ESET
 import selenium.webdriver
 import random
 import string
+import sys
+import time
 
 def CreateEmailAndPassword():
     email_obj = ESET.Email()
@@ -27,6 +29,12 @@ def CreateAccount(email, password):
         "document.forms[0].submit()"
     ]
     driver.execute_script('\n'.join(js))
+    time.sleep(2)
+    title = driver.execute_script('return document.title')
+    if title == 'Service not available':
+        print('[-] ESET temporarily blocked your IP, try again later!!!')
+        driver.quit()
+        return None
     return driver
 
 def GetToken(email_obj):
@@ -39,6 +47,8 @@ def ConfirmAccount(driver, token):
 def CreateALL():
     email_obj, email, password = CreateEmailAndPassword()
     driver = CreateAccount(email, password)
+    if driver is None:
+        return None
     token = GetToken(email_obj)
     print(f'\n[+] ESET Token: {token}')
     ConfirmAccount(driver, token)
