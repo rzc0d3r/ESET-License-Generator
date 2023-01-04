@@ -44,16 +44,18 @@ def ConfirmAccount(driver, token):
     driver.get(f'https://login.eset.com/link/confirmregistration?token={token}')
     driver.quit()
 
-def CreateALL():
+def CreateALL(print_eset_token=True, print_account_data=False):
     try:
         email_obj, email, password = CreateEmailAndPassword()
         driver = CreateAccount(email, password)
         if driver is None:
             return None
         token = GetToken(email_obj)
-        print(f'\n[+] ESET Token: {token}')
+        if print_eset_token:
+            print(f'\n[+] ESET Token: {token}')
+        if print_account_data:
+            print(f'\nEmail: {email}\nPassword: {password}')
         ConfirmAccount(driver, token)
-        print(f'\nEmail: {email}\nPassword: {password}')
         return email, password
     except ESET.EmailConnectError:
         print('[-] Error connect to server!!!')
@@ -62,5 +64,5 @@ def CreateALL():
     return None
 
 if __name__ == '__main__':
-    CreateALL()
+    CreateALL(True, True)
     input('Press Enter...')
