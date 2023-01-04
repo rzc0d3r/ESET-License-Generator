@@ -1,8 +1,7 @@
-# Version: 1.0.1 (31.12.2022)
+# Version: 1.0.2 (05.01.2023)
 import re
 import requests
 import time
-import sys
 
 class EmailConnectError(Exception):
     pass
@@ -50,7 +49,7 @@ class Email:
             raise EmailConnectError
         return r.json()
 
-def ESETIntercepter(email_object):
+def eset_intercepter(email_object, delay=1.0):
     while True:
         json = email_object.read_email()
         if json != []:
@@ -61,7 +60,4 @@ def ESETIntercepter(email_object):
                 if match is not None:
                     token = match.group()[6:]
                     return token
-                    break
-        else:
-            pass
-        time.sleep(1)
+        time.sleep(delay)
