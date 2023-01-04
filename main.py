@@ -1,12 +1,19 @@
-# Version 1.0.1 (31.12.2022)
+# Version 1.0.2 (04.01.2023)
 import eset_license_generator_auto as eset_auto
 import time
 
+# ----------- START SETUP -----------
+
 SIZE = 1
 OUTPUT = 'eset_accounts.txt'
-SLEEP = 1
+SLEEP = 1 # in seconds
+
+# ------------ END SETUP ------------
+
+SEP = '-'*90 # DO NOT TOUCH
 
 for i in range(SIZE):
+    print(SEP)
     data = eset_auto.CreateALL()
     if data is not None:
         email, password = data
@@ -21,6 +28,8 @@ for i in range(SIZE):
     else:
         print('[-] Error get account!!!')
         break
+    print(SEP)
+    print(f'\n[*] Waiting {SLEEP} seconds\n')
     time.sleep(SLEEP)
     
 input('Press Enter...')
