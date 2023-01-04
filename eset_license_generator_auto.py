@@ -1,4 +1,4 @@
-# Version: 1.0.3.1 (31.12.2022)
+# Version: 1.0.3.2 (04.01.2023)
 import eset_intercepter as ESET
 import selenium.webdriver
 import random
