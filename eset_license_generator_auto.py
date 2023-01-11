@@ -1,4 +1,4 @@
-# Version: 1.0.5 (11.01.2023)
+# Version: 1.0.6 (11.01.2023)
 import eset_intercepter
 import time
 
@@ -16,12 +16,16 @@ def CreateEmailAndPassword():
     password = ''.join(['Aa0$']+[choice(ascii_letters) for _ in range(6)])
     return email_obj, email, password
     
-def CreateAccount(email, password):
-    driver_options = ChromeOptions()
-    driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+def CreateAccount(email, password, old_driver=None):
+    driver = None
+    if type(old_driver) == Chrome:
+        driver = old_driver
+    else:
+        driver_options = ChromeOptions()
+        driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    driver = Chrome(service=Service('chromedriver.exe'), options=driver_options)
-    driver.minimize_window()
+        driver = Chrome(service=Service('chromedriver.exe'), options=driver_options)
+        driver.set_window_size(1, 1)
 
     driver.get(f'https://login.eset.com/Register')
     submit, getbyid = 'document.forms[0].submit()', 'document.getElementById'
@@ -52,12 +56,14 @@ def GetToken(email_obj):
 
 def ConfirmAccount(driver, token):
     driver.get(f'https://login.eset.com/link/confirmregistration?token={token}')
-    driver.quit()
 
-def CreateALL(print_eset_token=True, print_account_data=False):
+def CreateALL(print_eset_token=True, print_account_data=False, old_driver=None):
     try:
+        driver = None
+        if type(old_driver) == Chrome:
+            driver = old_driver
         email_obj, email, password = CreateEmailAndPassword()
-        driver = CreateAccount(email, password)
+        driver = CreateAccount(email, password, old_driver=driver)
         if driver is None:
             return None
         token = GetToken(email_obj)
@@ -66,7 +72,7 @@ def CreateALL(print_eset_token=True, print_account_data=False):
         if print_account_data:
             print(f'\nEmail: {email}\nPassword: {password}')
         ConfirmAccount(driver, token)
-        return email, password
+        return email, password, driver
     except eset_intercepter.EmailConnectError:
         print('[-] Error connect to server!!!')
     except Exception as E:
@@ -74,5 +80,9 @@ def CreateALL(print_eset_token=True, print_account_data=False):
     return None
 
 if __name__ == '__main__':
-    CreateALL(True, True)
+    data = CreateALL(True, True)
+    if data is None:
+        pass
+    else:
+        data[2].quit()
     input('Press Enter...')
