@@ -1,4 +1,4 @@
-# Version: 1.0.4 (05.01.2023)
+# Version: 1.0.5 (11.01.2023)
 import eset_intercepter
 import time
 
@@ -26,6 +26,13 @@ def CreateAccount(email, password):
     driver.get(f'https://login.eset.com/Register')
     submit, getbyid = 'document.forms[0].submit()', 'document.getElementById'
     driver.execute_script(f"{getbyid}('Email').value='{email}'\n{submit}")
+
+    while True:
+        time.sleep(0.1)
+        title = driver.execute_script(f"return {getbyid}('Password')")
+        if title != None:
+            break
+
     driver.execute_script(f"{getbyid}('Password').value='{password}'\n{submit}")
 
     while True:
