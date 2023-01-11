@@ -1,4 +1,4 @@
-# Version 1.0.2 (04.01.2023)
+# Version 1.0.3 (11.01.2023)
 import eset_license_generator_auto as eset_auto
 import time
 
@@ -12,11 +12,13 @@ SLEEP = 1 # in seconds
 
 SEP = '-'*90 # DO NOT TOUCH
 
+driver = None
 for i in range(SIZE):
     print(SEP)
-    data = eset_auto.CreateALL()
+    data = eset_auto.CreateALL(old_driver=driver)
     if data is not None:
-        email, password = data
+        email, password = data[0], data[1]
+        driver = data[2]
         try:
             f = open(OUTPUT, 'a')
             f.write(f'{email} : {password}\n')
@@ -31,5 +33,6 @@ for i in range(SIZE):
     print(SEP)
     print(f'\n[*] Waiting {SLEEP} seconds\n')
     time.sleep(SLEEP)
-    
+
+driver.quit()   
 input('Press Enter...')
