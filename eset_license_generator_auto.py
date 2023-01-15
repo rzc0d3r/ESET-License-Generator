@@ -1,4 +1,4 @@
-# Version: 1.0.6 (11.01.2023)
+# Version: 1.0.7 (12.01.2023)
 import eset_intercepter
 import time
 
@@ -50,6 +50,9 @@ def CreateAccount(email, password, old_driver=None):
         if url == 'https://home.eset.com/':
             return driver
     return None
+
+def ClearCookies(driver):
+    driver.delete_all_cookies()
 
 def GetToken(email_obj):
     return eset_intercepter.eset_intercepter(email_obj, 0.5)
