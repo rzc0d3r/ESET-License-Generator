@@ -3,9 +3,9 @@ ESET License Generator - Generates accounts to activate the trial period
 
 # How to use
 
-0. Download [Chrome](https://www.google.com/intl/ru/chrome/) and his [Stable Driver](https://chromedriver.chromium.org/). The driver must be unpacked and moved to the folder with main.py. Next, install the Python libraries:
+0. Download [Chrome](https://www.google.com/intl/ru/chrome/) and his [Stable Driver](https://chromedriver.chromium.org/). The driver must be unpacked and moved to the folder with main.py. Next, install the Python libraries, in cmd or powershell or other console:
 
-pip install selenium, requests
+pip install selenium requests
 
 1. Next, you need to edit main.py to suit your needs.
 SIZE - a number (int) indicating how many accounts to create
