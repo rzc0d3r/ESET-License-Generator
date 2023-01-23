@@ -23,11 +23,11 @@ After that, you will see a file with accounts in OUTPUT
 ![](img/2_opt.png)
 ![](img/3_opt.png)
 ![](img/4_opt.png)
+![](img/5_opt.png)
 
 5. In your browser, go to the [ESET HOME](https://login.eset.com/Login) website and log in using the data from the OUTPUT file.
 Go to the licenses section and uninstall the current license
 
-![](img/5_opt.png)
 ![](img/6_opt.png)
 ![](img/7_opt.png)
 ![](img/8_opt.png)
