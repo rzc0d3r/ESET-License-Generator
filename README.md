@@ -30,8 +30,9 @@ After that, you will see a file with accounts in OUTPUT
 ![](en_img/4_opt.png)
 ![](en_img/5_opt.png)
 
-5 (NEW METHOD). Open the eset_license_web.py file and enter the email and password for your ESET account that you entered in step 4. 
-Then continue as in step 5 (Remove all licenses). eset_license_web.py file will automatically open the license page!
+5 (NEW METHOD). Open the eset_license_web.py file and enter the email and password for your ESET account that you entered in step 4.
+Then continue as in step 5 (Remove all licenses).
+eset_license_web.py file will automatically open the license page!
 
 ![](en_img/5_new_opt.png)
 
