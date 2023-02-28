@@ -44,9 +44,10 @@ Go to the licenses section and uninstall the current license
 ![](en_img/6_opt.png)
 ![](en_img/7_opt.png)
 ![](en_img/8_opt.png)
+![](en_img/9_opt.png)
 
 6. Go back to ESET, click Activate full version and click Try for free
-![](en_img/9_opt.png)
+
 ![](en_img/10_opt.png)
 ![](en_img/11_opt.png)
 ![](en_img/12_opt.png)
