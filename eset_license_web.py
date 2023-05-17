@@ -1,4 +1,4 @@
-# Version: 1.0.1 (11.02.2023)
+# Version: 1.0.2 (17.05.2023)
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
@@ -51,8 +51,8 @@ def eset_login(email, password):
             status_login = True
     return driver, status_login
 
-email = input('ESET Account Email: ')
-password = input('ESET Account Password: ')
+email = input('ESET Account Email: ').strip()
+password = input('ESET Account Password: ').strip()
 driver, status_login = eset_login(email, password)
 if status_login:
     print('\n[+] Successuful login!!!')
