@@ -1,3 +1,5 @@
+# The NEW version of the program is available [HERE](https://github.com/rzc0d3r/ESET-KeyGen)
+
 # ESET-License-Generator
 ESET License Generator - Generates accounts to activate the trial period
 
