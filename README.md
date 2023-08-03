@@ -1,4 +1,4 @@
-# Support for this repository has been discontinued. Since there is a brand new version that works automatically and gives you license keys instead of accounts. You can find this version [HERE](https://github.com/rzc0d3r/ESET-KeyGen)
+# Also try the brand new version that runs automatically and issues license keys instead of credentials. This version can be found [HERE](https://github.com/rzc0d3r/ESET-KeyGen)
 
 # ESET-License-Generator
 ESET License Generator - Generates accounts to activate the trial period
