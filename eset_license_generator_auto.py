@@ -1,4 +1,4 @@
-# Version: 1.0.7 (12.01.2023)
+# Version: 1.0.8 (03.08.2023)
 import eset_intercepter
 import time
 
@@ -8,6 +8,10 @@ from selenium.webdriver.chrome.service import Service
 
 from string import ascii_letters
 from random import choice
+
+from eset_license_web import until_code_execute
+
+import os
 
 def CreateEmailAndPassword():
     email_obj = eset_intercepter.Email()
@@ -22,9 +26,12 @@ def CreateAccount(email, password, old_driver=None):
         driver = old_driver
     else:
         driver_options = ChromeOptions()
+        if os.name == 'posix': # For Linux
+            driver_options.add_argument('--no-sandbox')
+            driver_options.add_argument('--disable-dev-shm-usage')
+            driver_options.add_argument('--headless')
         driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-        driver = Chrome(service=Service('chromedriver.exe'), options=driver_options)
+        driver = Chrome(service=Service('chromedriver'), options=driver_options)
         driver.set_window_size(1, 1)
 
     driver.get(f'https://login.eset.com/Register')
@@ -59,7 +66,9 @@ def GetToken(email_obj):
 
 def ConfirmAccount(driver, token):
     driver.get(f'https://login.eset.com/link/confirmregistration?token={token}')
-
+    until_code_execute(driver, ['return document.title === "ESET HOME"'], 1, 30, positive_result=True)
+    until_code_execute(driver, [f'return typeof document.getElementsByClassName("verification-email_p")[1] === "object"'], 1, 30, positive_result=False)
+    
 def CreateALL(print_eset_token=True, print_account_data=False, old_driver=None):
     try:
         driver = None
