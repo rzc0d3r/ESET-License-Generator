@@ -1,28 +1,30 @@
-# Version: 1.0.2 (17.05.2023)
+# Version: 1.0.3 (03.08.2023)
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
 
-import sys
+import os
 import time
 
-def until_code_execute(driver, js, timeout, max_iter):
+def until_code_execute(driver, js, timeout, max_iter, positive_result='OK'):
     i = 0
     while True:
         try:
             if i > max_iter:
                 return False
             result = driver.execute_script('\n'.join(js))
-            if result == 'OK':
+            if result == positive_result:
                 return True
         except:
             pass
         i += 1
         time.sleep(timeout)
 
-
 def eset_login(email, password):
     driver_options = ChromeOptions()
+    if os.name == 'posix': # For Linux
+        driver_options.add_argument('--no-sandbox')
+        driver_options.add_argument('--disable-dev-shm-usage')
     driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     driver = Chrome(service=Service('chromedriver.exe'), options=driver_options)
@@ -51,14 +53,15 @@ def eset_login(email, password):
             status_login = True
     return driver, status_login
 
-email = input('ESET Account Email: ').strip()
-password = input('ESET Account Password: ').strip()
-driver, status_login = eset_login(email, password)
-if status_login:
-    print('\n[+] Successuful login!!!')
-    driver.get('https://home.eset.com/licenses')
-    input('\nPress Enter if you have deleted licenses...')
-else:
-    print('\n[-] Incorrect login data!!!')
-    input('\nPress Enter...')
-driver.quit()
+if __name__ == '__main__':
+    email = input('ESET Account Email: ').strip()
+    password = input('ESET Account Password: ').strip()
+    driver, status_login = eset_login(email, password)
+    if status_login:
+        print('\n[+] Successuful login!!!')
+        driver.get('https://home.eset.com/licenses')
+        input('\nPress Enter if you have deleted licenses...')
+    else:
+        print('\n[-] Incorrect login data!!!')
+        input('\nPress Enter...')
+    driver.quit()
