@@ -69,3 +69,5 @@ Go to the licenses section and uninstall the current license
 4. You can run eset_license_generator_auto.py if you need to create 1 account. The credentials will be in the console (Not saved to a file!!!)
 
 5. ONE ACCOUNT = ONE LICENSE !!!
+
+6. The plus side of this method is that accounts can be kept indefinitely and can be used at any time. Keys - no
