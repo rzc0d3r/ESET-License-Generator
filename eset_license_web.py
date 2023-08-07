@@ -1,4 +1,4 @@
-# Version: 1.0.3 (03.08.2023)
+# Version: 1.0.3.1 (03.08.2023)
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
@@ -27,7 +27,7 @@ def eset_login(email, password):
         driver_options.add_argument('--disable-dev-shm-usage')
     driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    driver = Chrome(service=Service('chromedriver.exe'), options=driver_options)
+    driver = Chrome(options=driver_options)
     driver.set_window_size(600, 800)
 
     driver.get('https://login.eset.com/Login')
