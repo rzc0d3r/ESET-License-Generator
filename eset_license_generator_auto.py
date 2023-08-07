@@ -1,4 +1,4 @@
-# Version: 1.0.8 (03.08.2023)
+# Version: 1.0.8.1 (03.08.2023)
 import eset_intercepter
 import time
 
@@ -31,7 +31,7 @@ def CreateAccount(email, password, old_driver=None):
             driver_options.add_argument('--disable-dev-shm-usage')
             driver_options.add_argument('--headless')
         driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        driver = Chrome(service=Service('chromedriver'), options=driver_options)
+        driver = Chrome(options=driver_options)
         driver.set_window_size(1, 1)
 
     driver.get(f'https://login.eset.com/Register')
