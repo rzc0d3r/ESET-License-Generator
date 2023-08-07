@@ -1,4 +1,4 @@
-# Version: 1.0.8.1 (03.08.2023)
+# Version: 1.0.8.1 (07.08.2023)
 import eset_intercepter
 import time
 
