@@ -1,4 +1,4 @@
-# Version: 1.0.3.1 (03.08.2023)
+# Version: 1.0.3.1 (07.08.2023)
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
