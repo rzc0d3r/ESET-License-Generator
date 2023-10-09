@@ -1,4 +1,4 @@
-# Version: 1.0.8.1 (07.08.2023)
+# Version: 1.0.8.2 (09.10.2023)
 import eset_intercepter
 import time
 
@@ -35,8 +35,8 @@ def CreateAccount(email, password, old_driver=None):
         driver.set_window_size(1, 1)
 
     driver.get(f'https://login.eset.com/Register')
-    submit, getbyid = 'document.forms[0].submit()', 'document.getElementById'
-    driver.execute_script(f"{getbyid}('Email').value='{email}'\n{submit}")
+    getbyid = 'document.getElementById'
+    driver.execute_script(f"{getbyid}('Email').value='{email}'\ndocument.forms[0].submit()")
 
     while True:
         time.sleep(0.1)
@@ -44,7 +44,8 @@ def CreateAccount(email, password, old_driver=None):
         if title != None:
             break
 
-    driver.execute_script(f"{getbyid}('Password').value='{password}'\n{submit}")
+    driver.execute_script(f"{getbyid}('Password').value='{password}'")
+    driver.execute_script(f"{getbyid}('input-main input-main--notempty')[0].value='230'\ndocument.forms[0].submit()") # Change Account Region to Ukraine
 
     while True:
         time.sleep(0.1)
