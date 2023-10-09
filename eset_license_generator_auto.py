@@ -1,5 +1,5 @@
-# Version: 1.0.8.3 (101023-0017)
-VERSION = 'v1.0.8.3 (101023-0017) by rzc0d3r'
+# Version: 1.0.8.3 (101023-0103)
+VERSION = 'v1.0.8.3 (101023-0103) by rzc0d3r'
 import eset_intercepter
 
 from selenium.webdriver import Chrome
@@ -49,7 +49,7 @@ def CreateAccount(email, password, old_driver=None):
     driver.execute_script(f"{GET_EBID}('Password').value='{password}'")
     driver.execute_script(f"{GET_EBCN}('input-main input-main--notempty')[0].value='230'\ndocument.forms[0].submit()") # Change Account Region to Ukraine
 
-    is_registed = untilConditionExecute(driver, 'return document.title !== "Service not available" && document.URL === "https://home.eset.com/"')
+    is_registed = untilConditionExecute(driver, 'return document.title !== "Service not available" && document.URL === "https://home.eset.com/"', 0.5, 3)
     if is_registed:
         return driver
     else:
