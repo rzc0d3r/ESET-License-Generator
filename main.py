@@ -1,5 +1,6 @@
-# Version 1.0.4 (12.01.2023)
+# Version 1.0.5 (101023-0017)
 import eset_license_generator_auto as eset_auto
+from modules.shared_tools import chromeDriverInstallerMenu
 import time
 
 # ----------- START SETUP -----------
@@ -9,6 +10,9 @@ OUTPUT = 'eset_accounts.txt'
 SLEEP = 1 # in seconds
 
 # ------------ END SETUP ------------
+if not chromeDriverInstallerMenu():
+    exit(-1)
+print('\n-- ESET License Generator {0} --\n'.format(eset_auto.VERSION))
 
 SEP = '-'*65 # DO NOT TOUCH
 
@@ -24,15 +28,15 @@ for i in range(SIZE):
             f.write(f'{email} : {password}\n')
             f.close()
         except:
-            print('[-] Error write account to file!!!')
+            print('\n[-] Error write account to file!!!')
             break
-        print(f'[+] {email}:{password} - written successfully to output file!!!')
+        print(f'\n[+] {email}:{password} - written successfully to output file!!!')
     else:
-        print('[-] Error get account!!!')
+        print('\n[-] Error get account!!!')
         break
     print(SEP)
     print(f'\n[*] Waiting {SLEEP} seconds\n')
-    eset_auto.ClearCookies(driver)
+    driver.delete_all_cookies()
     time.sleep(SLEEP)
 
 driver.quit()   
