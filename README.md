@@ -1,5 +1,4 @@
-## Use the new version that does everything automatically and gives you licence keys and credentials to choose from. This version can be found [HERE](https://github.com/rzc0d3r/ESET-KeyGen)
-
+## Use the new version that does everything automatically and gives you licence keys and credentials to choose from.This version can be found [HERE](https://github.com/rzc0d3r/ESET-KeyGen)
 # ESET-License-Generator
 ESET License Generator - Generates accounts to activate the trial period
 
